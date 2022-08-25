@@ -1,0 +1,121 @@
+header{
+    text-align: center;
+    color: #232323;
+}
+
+header button{
+    position: absolute;
+    top: 20px;;
+    right: 10px;
+    font-size: 20px;
+    border: 0;
+    padding: 5px;
+    border-radius: 10px;
+    background: #8f1e1e;
+    color: white;
+}
+
+.container{
+    text-align: center;
+}
+
+#auth{
+    border-radius: 10px;
+    background: #232323;
+    width: 400px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    color: white;
+    margin: 0 auto;
+}
+
+
+#auth table{
+    width: 200px;
+    margin: 0 auto;
+}
+
+#auth input[type="submit"]{
+    width: 220px;
+    border: 0;
+    border-radius: 3px;
+    padding: 3px;
+    font-weight: bold;
+    color: #232323;
+}
+
+.flash{
+    text-align: center;
+    margin: 10px;
+    color: red;
+}
+
+
+.update{
+    font-size: 20px;
+    border: 0;
+    padding: 5px;
+    border-radius: 10px;
+    background: #25388f;
+    color: white;
+}
+
+.sort{
+    font-size: 20px;
+    border: 0;
+    padding: 5px;
+    border-radius: 10px;
+    background: #376447;
+    color: white;
+}
+
+
+.sort_desc{
+    font-size: 20px;
+    border: 0;
+    padding: 5px;
+    border-radius: 10px;
+    background: #b28814;
+    color: white;
+}
+
+
+button:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 230px;
+    margin: 20px;
+    box-shadow: 1px 1px 3px #898282;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card p{
+    padding-left: 10px;
+    color: #232323;
+    text-align: left;
+}
+
+.card .name{
+    font-weight: bold;
+}
+
+.card img{
+    width: 100%;
+}
+
+.card .delete{
+    text-align: center;
+    color: #901e1e;
+    font-weight: bold;
+    cursor: pointer;
+}

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Автомобили OLX{% endblock %}</h1>
+    <form action="/logout" method="post">
+        <button type="submit">Выйти</button>
+    </form>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <button class="update" onclick="update(0)">Обновить</button>
+        <button class="sort" onclick="update(1)">Сортировать от дешевых</button>
+        <button class="sort_desc" onclick="update(2)">Сортировать от дорогих</button>
+        <br>
+
+        <div class="cards"></div>
+
+    </div>
+
+    <script>
+        const update = (sort) => {
+            $.ajax({
+                url: '/get_content',
+                method: 'POST',
+                data: {
+                    "sort": sort
+                },
+                success: (msg) => {
+                    let access_level = msg['access_level']
+
+                    $('.cards').empty();
+
+                    for (let offer of msg['offers']) {
+
+                        let photo = offer['img_link'] == null ? "" : `<img alt="${offer['name']}" src="${offer['img_link']}">`
+                        let seller = offer['seller_name'] == null ? "" : `<p class="seller">${offer['seller_name']}</p>`
+
+                        $('.cards').append(`
+                            <div class="card">
+                                ${photo}
+                                <p class="name">${offer['name']}</p>
+                                <p class="price">${offer['price']} грн</p>
+                                ${seller}
+                                <p class="delete" onclick="deletePost(${offer['id']}, this)">Удалить</p>
+                            </div>
+                            `);
+                    }
+                }
+            })
+        }
+
+        const deletePost = (id, elem) => {
+            $.ajax({
+                url: '/delete_offer',
+                method: 'POST',
+                data: {
+                    "offer_id": id
+                },
+                success: (msg) => {
+                    $(elem).parent().remove()
+                }
+            })
+        }
+    </script>
+
+
+{% endblock %}
